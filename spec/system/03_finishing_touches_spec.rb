@@ -30,7 +30,7 @@ describe '[STEP3] 仕上げのテスト' do
       fill_in 'user[name]', with: user.name
       fill_in 'user[password]', with: user.password
       click_button 'Log in'
-      logout_link = find_all('a')[3].native.inner_text
+      logout_link = find_all('a')[4].native.inner_text
       logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link logout_link
       is_expected.to have_content 'successfully'
@@ -326,23 +326,23 @@ describe '[STEP3] 仕上げのテスト' do
 
     it 'ユーザ一覧画面' do
       visit users_path
-      is_expected.to have_selector '.container .row .col-xs-3'
-      is_expected.to have_selector '.container .row .col-xs-9'
+      is_expected.to have_selector '.container .row .col-md-3'
+      is_expected.to have_selector '.container .row .col-md-8.offset-md-1'
     end
     it 'ユーザ詳細画面' do
       visit user_path(user)
-      is_expected.to have_selector '.container .row .col-xs-3'
-      is_expected.to have_selector '.container .row .col-xs-9'
+      is_expected.to have_selector '.container .row .col-md-3'
+      is_expected.to have_selector '.container .row .col-md-8.offset-md-1'
     end
     it '投稿一覧画面' do
       visit books_path
-      is_expected.to have_selector '.container .row .col-xs-3'
-      is_expected.to have_selector '.container .row .col-xs-9'
+      is_expected.to have_selector '.container .row .col-md-3'
+      is_expected.to have_selector '.container .row .col-md-8.offset-md-1'
     end
     it '投稿詳細画面' do
       visit book_path(book)
-      is_expected.to have_selector '.container .row .col-xs-3'
-      is_expected.to have_selector '.container .row .col-xs-9'
+      is_expected.to have_selector '.container .row .col-md-3'
+      is_expected.to have_selector '.container .row .col-md-8.offset-md-1'
     end
   end
 
@@ -355,7 +355,7 @@ describe '[STEP3] 仕上げのテスト' do
       end
 
       it '本のアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-book'
+        is_expected.to have_selector '.fas.fa-book'
       end
     end
 
@@ -367,7 +367,7 @@ describe '[STEP3] 仕上げのテスト' do
       end
 
       it '本のアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-book'
+        is_expected.to have_selector '.fas.fa-book'
       end
     end
 
@@ -379,16 +379,16 @@ describe '[STEP3] 仕上げのテスト' do
       end
 
       it 'Homeリンクのアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-home'
+        is_expected.to have_selector '.fas.fa-home'
       end
       it 'Aboutリンクのアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-link'
+        is_expected.to have_selector '.fas.fa-link'
       end
       it 'sign upリンクのアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-edit'
+        is_expected.to have_selector '.fas.fa-user-plus'
       end
       it 'loginリンクのアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-log-in'
+        is_expected.to have_selector '.fas.fa-sign-in-alt'
       end
     end
 
@@ -403,16 +403,16 @@ describe '[STEP3] 仕上げのテスト' do
       end
 
       it 'Homeリンクのアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-home'
+        is_expected.to have_selector '.fas.fa-home'
       end
       it 'Usersリンクのアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-user'
+        is_expected.to have_selector '.fas.fa-users'
       end
       it 'Booksリンクのアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-book'
+        is_expected.to have_selector '.fas.fa-book-open'
       end
       it 'log outリンクのアイコンが表示される' do
-        is_expected.to have_selector '.glyphicon.glyphicon-log-out'
+        is_expected.to have_selector '.fas.fa-sign-out-alt'
       end
     end
 
@@ -428,19 +428,19 @@ describe '[STEP3] 仕上げのテスト' do
 
       it 'ユーザ一覧画面でレンチアイコンが表示される' do
         visit users_path
-        is_expected.to have_selector '.glyphicon.glyphicon-wrench'
+        is_expected.to have_selector '.fas.fa-user-cog'
       end
       it 'ユーザ詳細画面でレンチアイコンが表示される' do
         visit user_path(user)
-        is_expected.to have_selector '.glyphicon.glyphicon-wrench'
+        is_expected.to have_selector '.fas.fa-user-cog'
       end
       it '投稿一覧画面でレンチアイコンが表示される' do
         visit books_path
-        is_expected.to have_selector '.glyphicon.glyphicon-wrench'
+        is_expected.to have_selector '.fas.fa-user-cog'
       end
       it '投稿詳細画面でレンチアイコンが表示される' do
         visit book_path(book)
-        is_expected.to have_selector '.glyphicon.glyphicon-wrench'
+        is_expected.to have_selector '.fas.fa-user-cog'
       end
     end
   end

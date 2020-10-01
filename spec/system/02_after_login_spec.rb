@@ -18,19 +18,19 @@ describe '[STEP2] ユーザログイン後のテスト' do
       subject { current_path }
 
       it 'Homeを押すと、自分のユーザ詳細画面に遷移する' do
-        home_link = find_all('a')[0].native.inner_text
+        home_link = find_all('a')[1].native.inner_text
         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link home_link
         is_expected.to eq '/users/' + user.id.to_s
       end
       it 'Usersを押すと、ユーザ一覧画面に遷移する' do
-        users_link = find_all('a')[1].native.inner_text
+        users_link = find_all('a')[2].native.inner_text
         users_link = users_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link users_link
         is_expected.to eq '/users'
       end
       it 'Booksを押すと、投稿一覧画面に遷移する' do
-        books_link = find_all('a')[2].native.inner_text
+        books_link = find_all('a')[3].native.inner_text
         books_link = books_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link books_link
         is_expected.to eq '/books'
