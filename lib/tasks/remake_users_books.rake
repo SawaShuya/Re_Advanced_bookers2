@@ -2,9 +2,9 @@ task :remake_users_books => :environment do
     User.delete_all
     users = User.create!(
     [
-        {email: 'olivia@test.com', name: 'Olivia', introduction: 'Hello!!', password: 'password', profile_image: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg")},
-        {email: 'james@test.com', name: 'James', introduction: 'Hello!!', password: 'password', profile_image: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg")},
-        {email: 'lucas@test.com', name: 'Lucas', introduction: 'Hello!!', password: 'password', profile_image: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg")}
+        {email: 'olivia@test.com', name: 'Olivia', introduction: 'Hello!!', password: 'password')},
+        {email: 'james@test.com', name: 'James', introduction: 'Hello!!', password: 'password')},
+        {email: 'lucas@test.com', name: 'Lucas', introduction: 'Hello!!', password: 'password')}
     ]
     )
 
