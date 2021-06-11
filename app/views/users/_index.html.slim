@@ -5,7 +5,7 @@ table.table
         | image
       th
         | name
-      th[colspan="3"]
+      th[colspan="6"]
   tbody
     - users.each do |user|
       tr
@@ -13,5 +13,14 @@ table.table
           = attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg")
         td
           = user.name
+        td
+          | follow:
+          = link_to user.follower.count, user_followings_path(user)
+        td
+          | followed by:
+          = link_to user.followed.count, user_followed_path(user)
+        td
+          - unless user == current_user
+            = render 'relationships/follow_btn', user: user
         td
           = link_to 'Show', user, class: "user_#{user.id}"

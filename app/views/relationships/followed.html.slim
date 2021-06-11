@@ -1,0 +1,17 @@
+.container.px-5.px-sm-0
+  .row
+    .col-md-3
+      h2
+        | User info
+      = render 'users/info', user: @user
+      h2.mt-3
+        | New book
+      = render 'books/form', book: @book
+    .col-md-8.offset-md-1
+      h2
+        | Followed By
+      - if @user.followed_users.present?
+        = render 'users/index',users: @user.followed_users
+      - else
+        p
+          | No User

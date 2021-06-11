@@ -11,6 +11,19 @@ table.table
       | introduction
     th
       = user.introduction
+  tr
+    th
+      | follow
+    th
+      = link_to user.follower.count, user_followings_path(user)
+  tr
+    th
+      | followed by
+    th
+      = link_to user.followed.count, user_followed_path(user)
 |  　 
 .row
-  = link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}"
+  - if user == current_user
+    = link_to '', edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}"
+  - else
+    = render 'relationships/follow_btn', user: user

@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  def set_book
+    @book =   Book.find_or_initialize_by(id: params[:id])
+  end
+  
 
   private
 
