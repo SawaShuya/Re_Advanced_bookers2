@@ -1,0 +1,5 @@
+= form_with model:[book, book_comment], html: {class: "input-group"}, local: true do |f|
+  = f.text_field :content, class: 'form-control'
+  = f.button :type => "submit", class: 'btn btn-info input-group-append' do
+    i.far.fa-comment
+        
