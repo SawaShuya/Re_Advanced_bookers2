@@ -1,0 +1,16 @@
+table.table
+  tr
+    = attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg")
+  tr
+    th
+      | name
+    th
+      = user.name
+  tr
+    th
+      | introduction
+    th
+      = user.introduction
+|  　 
+.row
+  = link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}"
