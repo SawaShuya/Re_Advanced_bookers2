@@ -1,0 +1,11 @@
+- if user_signed_in?
+  .container.mb-3
+    .row
+      .col-md-4
+      .col-md-8.col-offset-1
+        = form_with url: search_path, html: {class: "input-group"}, local: true do |f|
+          = f.text_field :word, class: 'form-control'
+          = f.select :model, {'Book': 'Book', 'User': 'User'}, class: 'form-control'
+          = f.select :range, {'Perfect': 0, 'Prefix': 1, 'Backward': 2, 'Partial': 3}, class: 'form-control'
+          = f.button :type => "submit", class: 'btn btn-info input-group-append' do
+            i.fas.fa-search

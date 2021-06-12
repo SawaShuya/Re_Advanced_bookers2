@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
   
-
+  post 'search' => 'search#search', as: 'search'
 end

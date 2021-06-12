@@ -1,0 +1,18 @@
+.container
+  .row
+    .col-12
+      h2
+        | Results
+        
+      h3
+        = 'search for「' + @word + '」 in ' + @model + 's'
+      
+      - if @results.present?
+        - if @model == 'Book'
+          = render 'books/index', books: @results
+        - elsif @model == 'User'
+          = render 'users/index', users: @results
+      - else
+        p
+          | No match
+      

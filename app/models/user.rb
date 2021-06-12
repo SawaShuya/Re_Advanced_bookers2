@@ -22,4 +22,16 @@ class User < ApplicationRecord
 	def followed_by?(user)
 	  followed_users.where(id: user.id).exists?
 	end
+
+	def self.search_contents(word, range)
+		if range == 0
+			self.where(['name LIKE?', "#{word}"])
+		elsif range == 1
+			self.where(['name LIKE?', "#{word}%"])
+		elsif range == 2
+			self.where(['name LIKE?', "%#{word}"])
+		elsif range == 3
+			self.where(['name LIKE?', "%#{word}%"])
+		end
+	end
 end

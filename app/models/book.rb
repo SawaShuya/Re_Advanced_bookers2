@@ -10,5 +10,16 @@ class Book < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 	
+	def self.search_contents(word, range)
+		if range == 0
+			self.where(["title LIKE?", "#{word}"])
+		elsif range == 1
+			self.where(['title LIKE?', "#{word}%"])
+		elsif range == 2
+			self.where(['title LIKE?', "%#{word}"])
+		elsif range == 3
+			self.where(['title LIKE?', "%#{word}%"])
+		end
+	end
 
 end
