@@ -1,0 +1,2 @@
+- if current_user.mutual_follow?(user)
+  = link_to 'DM', start_dm_path(user), method: :post, class: 'btn btn-outline-primary' 

@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   end
   
   post 'search' => 'search#search', as: 'search'
+  
+  post 'dm/:id' => 'rooms#create_dm', as: 'start_dm'
+  resources :rooms, only: [:index, :create, :show]
+  
 end

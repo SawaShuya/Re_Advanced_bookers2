@@ -28,3 +28,4 @@
       = link_to '', edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}"
     - else
       = render 'relationships/follow_btn', user: user, page: '', display_user_id: user.id
+      = render 'rooms/dm_btn', user: user

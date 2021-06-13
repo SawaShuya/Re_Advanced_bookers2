@@ -1,15 +1,15 @@
 = render 'search/form'
 .container.px-5.px-sm-0
+  = render 'layouts/errors', obj: @book
   .row
     .col-md-3
       h2
         | User info
-      = render 'info', user: current_user
+      = render 'users/info', user: current_user
       h2.mt-3
         | New book
       = render 'books/form', book: @book
     .col-md-8.offset-md-1
       h2
-        | Users
-      .users
-        = render 'index',users: @users, page: 'index', display_user_id: current_user.id
+        | Chats
+      = render 'rooms/index', rooms: @rooms
