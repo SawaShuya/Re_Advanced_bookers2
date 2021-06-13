@@ -4,4 +4,8 @@ class Room < ApplicationRecord
   
   has_many :chats, dependent: :destroy
   
+  def opponent_for(user)
+    room_users.where.not(user_id: user.id).first.user
+  end
+  
 end

@@ -1,0 +1,14 @@
+- chats.each do |chat|
+  - if chat.user == current_user
+    .chat.text-right
+      .content.card.card-body.card-text.d-inline-block.text-left.mw-70
+        = chat.content
+      .chat_time.text-right.text-secondary
+        = chat.created_at.strftime('%m/%d %H:%M')
+  - else
+    .chat
+      .content.card.card-body.card-text.d-inline-block.mw-70
+        = chat.content
+      .chat_time.text-secondary
+        = chat.created_at.strftime('%m/%d %H:%M')
+  br

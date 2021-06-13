@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   
   post 'dm/:id' => 'rooms#create_dm', as: 'start_dm'
   resources :rooms, only: [:index, :create, :show]
+  resources :chats, only: [:create]
   
 end

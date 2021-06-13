@@ -19,6 +19,11 @@ class RoomsController < ApplicationController
   end
   
   def show
+    @room = Room.find(params[:id])
+    @chat = Chat.new
+    if @room.is_direct_message?
+      @opponent_user = @room.opponent_for(current_user)
+    end
   end
   
 

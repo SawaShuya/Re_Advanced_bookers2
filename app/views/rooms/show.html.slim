@@ -1,1 +1,10 @@
-Room Show
+.container
+  .row
+    .col-8.offset-2
+      h2.title
+        = "to " + @opponent_user.name
+        
+      .chats.border.w-100.overflow-auto
+        = render 'chats/index', chats: @room.chats
+      .chat_form
+        = render 'chats/form', chat: @chat, room: @room

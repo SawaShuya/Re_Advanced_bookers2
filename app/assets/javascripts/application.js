@@ -13,8 +13,17 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+/*global $*/
+
+$(document).on('turbolinks:load', function() {
+  $(document).ready(function () {
+    var hsize = $(window).height() - 250;
+    $(".chats").css("height", hsize + "px");
+  });
+});
+
