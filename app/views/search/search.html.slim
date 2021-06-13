@@ -11,7 +11,8 @@
         - if @model == 'Book'
           = render 'books/index', books: @results
         - elsif @model == 'User'
-          = render 'users/index', users: @results
+          .users
+            = render 'users/index', users: @results, page: 'search', display_user_id: ''
       - else
         p
           | No match

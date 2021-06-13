@@ -18,7 +18,8 @@ table.table.table-hover.table-inverse
         td
           = book.body
         td
-          = render 'favorites/faborite_btn', book: book
+          div class="favorite_btn_#{book.id}"
+            = render 'favorites/faborite_btn', book: book
         td
           span.far.fa-comment-alt
             = book.book_comments.count

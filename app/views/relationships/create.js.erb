@@ -1,0 +1,4 @@
+<% if @users.present? %>
+  $(".users").html("<%= j(render 'users/index', users: @users, page: @page, display_user_id: @display_user.id) %>")
+<% end %>
+$(".user_info").html("<%= j(render 'users/info', user: @display_user) %>")

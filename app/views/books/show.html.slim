@@ -27,7 +27,8 @@
             td
               = link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"
           td
-            = render 'favorites/faborite_btn', book: @book
+            div class="favorite_btn_#{@book.id}"
+              = render 'favorites/faborite_btn', book: @book
           td
             span.far.fa-comment-alt
               = @book.book_comments.count

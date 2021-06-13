@@ -3,14 +3,22 @@ class BookCommentsController < ApplicationController
   def create
     book_comment = @book.book_comments.new(book_comment_params)
     book_comment.user_id = current_user.id
-    book_comment.save
-    redirect_back(fallback_location: books_path)
+    respond_to do |format|
+      if book_comment.save
+        format.html {redirect_back(fallback_location: books_path)}
+        format.js
+      end
+    end
   end
   
   def destroy
     book_comment = @book.book_comments.find(params[:id])
-    book_comment.destroy
-    redirect_back(fallback_location: books_path)
+    respond_to do |format|
+      if book_comment.destroy
+        format.html {redirect_back(fallback_location: books_path)}
+        format.js
+      end
+    end
   end
   
   def set_book

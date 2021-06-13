@@ -10,4 +10,5 @@
     .col-md-8.offset-md-1
       h2
         | Users
-      = render 'index',users: @users
+      .users
+        = render 'index',users: @users, page: 'index', display_user_id: current_user.id

@@ -74,3 +74,4 @@ gem 'whenever', require: false
 
 gem 'slim-rails'
 gem 'html2slim'
+gem 'rails-ujs'

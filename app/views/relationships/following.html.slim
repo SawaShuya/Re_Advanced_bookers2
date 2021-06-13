@@ -10,8 +10,5 @@
     .col-md-8.offset-md-1
       h2
         | Following Users
-      - if @user.following_users.present?
-        = render 'users/index',users: @user.following_users
-      - else
-        p
-          | No User
+      .users
+        = render 'users/index',users: @user.following_users, page: 'following', display_user_id: @user.id
