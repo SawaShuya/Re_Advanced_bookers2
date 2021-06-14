@@ -4,7 +4,7 @@
       h2.title
         = "to " + @opponent_user.name
         
-      .chats.border.w-100.overflow-auto
+      .chats.border style = "overflow-y:scroll; #f0ffff"
         = render 'chats/index', chats: @room.chats
       .chat_form
         = render 'chats/form', chat: @chat, room: @room
