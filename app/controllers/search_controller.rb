@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_params
 
   def search

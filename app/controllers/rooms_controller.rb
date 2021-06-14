@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
   before_action :check_dm_room, only: [:create_dm]
   before_action :check_mutual_follow, only: [:create_dm]
   before_action :set_book, only: [:index]

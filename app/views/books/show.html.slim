@@ -33,6 +33,9 @@
           td
             span.far.fa-comment-alt
               = @book.book_comments.count
+          td
+            .far.fa-eye
+              = @book.page_views
       .book_comment_form.mb-3
         = render 'book_comments/form', book: @book, book_comment: @book_comment
         

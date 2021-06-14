@@ -6,7 +6,7 @@ table.table.table-hover.table-inverse
         | Title
       th
         | Opinion
-      th[colspan="5"]
+      th[colspan="6rai"]
   tbody
     - books.each do |book|
       tr
@@ -23,3 +23,6 @@ table.table.table-hover.table-inverse
         td
           span.far.fa-comment-alt
             = book.book_comments.count
+        td
+          .far.fa-eye
+            = @book.page_views

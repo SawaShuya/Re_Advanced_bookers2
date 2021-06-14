@@ -1,8 +1,10 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_book, only: [:index, :show, :edit, :update, :destroy]
+  before_action :view_count, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :set_week, only: [:index]
+  
 
   def show
     @book_comment = BookComment.new
@@ -53,5 +55,9 @@ class BooksController < ApplicationController
     from = Time.current.at_beginning_of_day
     to = (from + 6.day).at_end_of_day
     @period = from..to
+  end
+  
+  def view_count
+    @book.update(page_views: @book.page_views + 1)
   end
 end
