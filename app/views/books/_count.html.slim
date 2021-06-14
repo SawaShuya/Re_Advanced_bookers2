@@ -1,0 +1,48 @@
+.statistics
+  table.table.table-bordered
+    tr
+      th
+        | Today
+        
+      th
+        | Yesterday
+      
+      th
+        | Comparison(%)
+    tr
+      td
+        = today_counts
+        
+      td
+        = yesterday_counts
+        
+      td
+        - if yesterday_counts == 0
+          = '--'
+        - else
+          = today_counts/yesterday_counts*100
+        
+  table.table.table-bordered
+    tr
+      th
+        | This week
+        
+      th
+        | Last week
+      th
+        | Comparison(%)
+    tr
+      td
+        = week_counts
+        
+      td
+        = last_week_counts
+      
+      td
+        - if last_week_counts == 0
+          = '--'
+        - else
+          = week_counts/last_week_counts*100
+      
+  .chart
+    = daily_counts

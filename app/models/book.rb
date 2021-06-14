@@ -21,5 +21,18 @@ class Book < ApplicationRecord
 			self.where(['title LIKE?', "%#{word}%"])
 		end
 	end
+	
+  def submit_count(book, now, today_counts, yesterday_counts, week_counts, last_week_counts)
+    if now.all_day.cover? book.created_at
+      today_counts += 1
+    elsif now.yesterday.all_day.cover? book.created_at
+      yesterday_counts += 1
+    elsif now.all_week.cover? book.created_at
+      week_counts += 1
+    elsif now.prev_week.all_week.cover? book.created_at
+      last_week_counts += 1
+    end
+    return today_counts, yesterday_counts, week_counts, last_week_counts
+  end
 
 end

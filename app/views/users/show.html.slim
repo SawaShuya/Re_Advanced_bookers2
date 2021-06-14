@@ -12,3 +12,7 @@
       h2
         | Books
       = render 'books/index',books: @books
+      
+      h2
+        | Statistics
+      = render 'books/count', today_counts: @today_counts, yesterday_counts: @yesterday_counts, week_counts: @week_counts, last_week_counts: @last_week_counts, daily_counts: @daily_counts
