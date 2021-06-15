@@ -74,6 +74,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chart_js (1.1.1)
     chronic (0.10.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -298,6 +299,7 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   byebug
   capybara (>= 2.15)
+  chart_js
   coffee-rails (~> 4.2)
   devise
   factory_bot_rails

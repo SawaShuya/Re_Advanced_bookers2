@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @now = Time.current
     set_two_week
     @count_books = @books.where(created_at: @two_week)
     submit_count
@@ -48,15 +49,17 @@ class UsersController < ApplicationController
     @daily_counts = [0, 0, 0, 0, 0, 0, 0]
     
     @count_books.each do |book|
-      if Time.current.all_day.cover? book.created_at
+      if @now.all_day.cover? book.created_at
         @today_counts += 1
+        @week_counts += 1
         @daily_counts[6] += 1
-      elsif Time.current.yesterday.all_day.cover? book.created_at
+      elsif @now.yesterday.all_day.cover? book.created_at
         @yesterday_counts += 1
+        @week_counts += 1
         @daily_counts[5] += 1
       elsif @a_week.cover? book.created_at
         @week_counts += 1
-        days_before = Time.current - book.created_at
+        days_before = @now - book.created_at
         @daily_counts[6-days_before] += 1
       elsif @last_week.cover? book.created_at
         @last_week_counts += 1
@@ -65,20 +68,20 @@ class UsersController < ApplicationController
   end
   
   def set_two_week
-    from = Time.current.ago(13.days).at_beginning_of_day
-    to = Time.current.at_end_of_day
+    from = @now.ago(13.days).at_beginning_of_day
+    to = @now.at_end_of_day
     @two_week = from..to
   end
   
   def set_a_week
-    from = Time.current.ago(6.days).at_beginning_of_day
-    to = Time.current.at_end_of_day
+    from = @now.ago(6.days).at_beginning_of_day
+    to = @now.at_end_of_day
     @a_week = from..to
   end
   
   def set_last_week
-    from = Time.current.ago(13.days).at_beginning_of_day
-    to = Time.current.ago(7.days).at_end_of_day
+    from = @now.ago(13.days).at_beginning_of_day
+    to = @now.ago(7.days).at_end_of_day
     @last_week = from..to
   end
 
