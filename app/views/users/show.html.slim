@@ -15,4 +15,21 @@
       
       h2
         | Statistics
-      = render 'users/statistics',user: @user, now: @now, today_counts: @today_counts, yesterday_counts: @yesterday_counts, week_counts: @week_counts, last_week_counts: @last_week_counts, daily_counts: @daily_counts
+
+      .statistics
+        .book_count
+          h3
+            | Submit
+          = render 'users/submit', today_counts: @today_counts, yesterday_counts: @yesterday_counts, week_counts: @week_counts, last_week_counts: @last_week_counts
+            
+        .chart
+          h3
+            | Daily Transition
+          = render 'users/chart', now: @now, daily_counts: @daily_counts
+          
+        .search_book_count
+          h3
+            | Investigation
+          .w-50
+            = render 'users/investigation', user: @user
+     

@@ -57,21 +57,21 @@ class UsersController < ApplicationController
     set_last_week
     
     @today_counts, @yesterday_counts, @week_counts, @last_week_counts = 0, 0, 0, 0
-    @daily_counts = [0, 0, 0, 0, 0, 0, 0]
+    gon.daily_counts = [0, 0, 0, 0, 0, 0, 0]
     
     @count_books.each do |book|
       if @now.all_day.cover? book.created_at
         @today_counts += 1
         @week_counts += 1
-        @daily_counts[6] += 1
+        gon.daily_counts[6] += 1
       elsif @now.yesterday.all_day.cover? book.created_at
         @yesterday_counts += 1
         @week_counts += 1
-        @daily_counts[5] += 1
+        gon.daily_counts[5] += 1
       elsif @a_week.cover? book.created_at
         @week_counts += 1
-        days_before = @now - book.created_at
-        @daily_counts[6-days_before] += 1
+        days_before = (@now.to_date - book.created_at.to_date).to_i
+        gon.daily_counts[6 - days_before] += 1
       elsif @last_week.cover? book.created_at
         @last_week_counts += 1
       end
@@ -88,6 +88,14 @@ class UsersController < ApplicationController
     from = @now.ago(6.days).at_beginning_of_day
     to = @now.at_end_of_day
     @a_week = from..to
+    
+    gon.days = []
+    for i in 1..5 do
+      i = 7 - i
+      gon.days.push(@now.ago(i.days).strftime('%m/%d'))
+      
+    end
+    gon.days.push('yesterday', 'today')
   end
   
   def set_last_week

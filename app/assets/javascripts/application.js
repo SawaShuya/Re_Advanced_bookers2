@@ -28,3 +28,34 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
+
+$(document).on('turbolinks:load', function() {
+  var ctx = document.getElementById("bookLineChart");
+  var bookLineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: gon.days,
+      datasets: [
+        {
+          label: 'Daily',
+          data: gon.daily_counts,
+          borderColor: "rgba(255,0,0,1)",
+          backgroundColor: "rgba(0,0,0,0)"
+        }
+      ]
+    },
+    options: {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              suggestedMax: 10,
+              suggestedMin: 0,
+              stepSize: 1
+            }
+          }
+        ]
+      }
+    }
+  });
+});

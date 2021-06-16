@@ -6,8 +6,10 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     meta[name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"]
+    = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"
   body
     = render 'layouts/header'
     main

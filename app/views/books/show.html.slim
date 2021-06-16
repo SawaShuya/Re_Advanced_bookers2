@@ -31,7 +31,7 @@
             div class="favorite_btn_#{@book.id}"
               = render 'favorites/faborite_btn', book: @book
           td
-            span.far.fa-comment-alt
+            .book_comments_count.far.fa-comment-alt
               = @book.book_comments.count
           td
             .far.fa-eye
