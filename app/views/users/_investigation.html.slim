@@ -1,0 +1,12 @@
+= form_with url: book_count_path, html: {class: 'input-group'}, method: :post do |f|
+  = f.hidden_field :id, value: user.id
+  = f.date_field :date, class: 'form-control'
+  = f.button :type => "submit", class: 'btn btn-info input-group-append' do
+    i.fas.fa-history
+
+.book_count_result
+  table.table.table-bordered
+    tr
+      th.table-active
+        | submit
+      td#book_count_result

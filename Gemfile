@@ -75,4 +75,4 @@ gem 'whenever', require: false
 gem 'slim-rails'
 gem 'html2slim'
 gem 'rails-ujs'
-gem 'chart_js'
+gem 'gon'

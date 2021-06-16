@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'followed' => 'relationships#followed'
     resource :relationships, only: [:create, :destroy]
   end
+  post 'users/:id/book_count' => 'users#book_count', as: 'book_count'
   
   post 'search' => 'search#search', as: 'search'
   

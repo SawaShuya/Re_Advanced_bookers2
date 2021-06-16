@@ -74,7 +74,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    chart_js (1.1.1)
     chronic (0.10.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -108,6 +107,11 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.4.0)
+      actionpack (>= 3.0.20)
+      i18n (>= 0.7)
+      multi_json
+      request_store (>= 1.0)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -141,6 +145,7 @@ GEM
     mini_portile2 (2.5.3)
     minitest (5.14.4)
     msgpack (1.4.2)
+    multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     netrc (0.11.0)
@@ -192,6 +197,8 @@ GEM
       mini_magick (~> 4.0)
       refile (~> 0.5)
     regexp_parser (2.1.1)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -299,12 +306,12 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   byebug
   capybara (>= 2.15)
-  chart_js
   coffee-rails (~> 4.2)
   devise
   factory_bot_rails
   faker
   font-awesome-sass (~> 5.13)
+  gon
   html2slim
   jbuilder (~> 2.5)
   jquery-rails

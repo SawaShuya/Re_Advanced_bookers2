@@ -50,4 +50,8 @@ class User < ApplicationRecord
     my_dm_rooms_id = self.rooms.where(is_direct_message: true).pluck(:id)
     return user.rooms.find_by(id: [my_dm_rooms_id])
   end
+  
+  def count_books_for(date)
+    self.books.where(created_at: date.all_day).count
+  end
 end
