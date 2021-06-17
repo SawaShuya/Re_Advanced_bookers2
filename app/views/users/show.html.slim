@@ -25,7 +25,8 @@
         .chart
           h3
             | Daily Transition
-          = render 'users/chart', now: @now, daily_counts: @daily_counts
+            
+          canvas#bookLineChart
           
         .search_book_count
           h3

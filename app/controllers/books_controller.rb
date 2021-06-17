@@ -52,7 +52,7 @@ class BooksController < ApplicationController
   end
   
   def set_week
-    from = Time.current.at_beginning_of_day
+    from = Time.current.ago(6.days).at_beginning_of_day
     to = Time.current.at_end_of_day
     @period = from..to
   end
