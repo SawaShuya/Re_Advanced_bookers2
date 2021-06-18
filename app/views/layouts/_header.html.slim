@@ -12,7 +12,7 @@ header
             li
               = link_to ' Home',user_path(current_user),class: 'fas fa-home nav-link text-light'
             li
-              = link_to ' Chats', rooms_path, class: 'fas fa-envelope nav-link text-light'
+              = link_to ' Chats', user_rooms_path(current_user), class: 'fas fa-envelope nav-link text-light'
             li
               = link_to ' Users',users_path,class: 'fas fa-users nav-link text-light'
             li

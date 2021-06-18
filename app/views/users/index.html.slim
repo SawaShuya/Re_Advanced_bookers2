@@ -11,5 +11,7 @@
     .col-md-8.offset-md-1
       h2
         | Users
+      = link_to "Rooms", rooms_path
+      = link_to "Create Room", new_room_path
       .users
         = render 'index',users: @users, page: 'index', display_user_id: current_user.id

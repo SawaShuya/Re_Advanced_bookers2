@@ -1,0 +1,14 @@
+= form_with model: room, local: true do |f|
+  = render 'layouts/errors', obj: room
+  .field
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .field
+    = f.label :introduction
+    = f.text_area :introduction, class: 'form-control', style: 'height: 200px;'
+  
+  .field
+    = f.label :image
+    = f.attachment_field :image, class: 'form-control-file'
+  .actions
+    = f.submit class: 'btn btn-success'

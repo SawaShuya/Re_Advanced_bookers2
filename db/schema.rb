@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_071744) do
+ActiveRecord::Schema.define(version: 2021_06_17_231004) do
 
   create_table "book_comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -67,6 +67,9 @@ ActiveRecord::Schema.define(version: 2021_06_14_071744) do
     t.boolean "is_direct_message", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "image_id"
+    t.text "introduction"
   end
 
   create_table "users", force: :cascade do |t|

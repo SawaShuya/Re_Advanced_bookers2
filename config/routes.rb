@@ -13,13 +13,14 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#following'
     get 'followed' => 'relationships#followed'
     resource :relationships, only: [:create, :destroy]
+    get 'rooms' => 'rooms#chat_rooms'
   end
   post 'users/:id/book_count' => 'users#book_count', as: 'book_count'
   
   post 'search' => 'search#search', as: 'search'
   
   post 'dm/:id' => 'rooms#create_dm', as: 'start_dm'
-  resources :rooms, only: [:index, :create, :show]
-  resources :chats, only: [:create]
+  resources :rooms, only: [:index, :create, :show, :new, :edit, :update]
+  resources :chats, only: [:create, :index]
   
 end

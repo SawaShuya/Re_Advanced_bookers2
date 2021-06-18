@@ -3,24 +3,19 @@ table.table.table-hover.table-inverse
     - rooms.each do |room|
       tr
         td
-          = link_to room_path(room) do
-            = attachment_image_tag(room.opponent_for(current_user), :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg")
+          = attachment_image_tag(room, :image, :fill, 50, 50, fallback: "no-image-icon.jpg")
+            
         td
-          = link_to room_path(room) do
-            = room.opponent_for(current_user).name
-        td.text-secondary
-          - if room.chats.present?
-            = room.chats.last.content
-        
-        td.text-secondary
-          - if room.chats.present?
-            = room.chats.last.created_at.strftime('%m/%d %H:%M')
+          = room.name
+
+        td 
+          i.fas.fa-user-friends
+          = room.room_users.count
+        td.join_room_btn
+          = render 'join_room_btn', user: current_user, room: room
           
         td
-          - if room.is_direct_message == true
-            span.badge.badge-primary
-              | DM
-          - elsif room.admin_id == current_user.id
+          - if room.admin_id == current_user.id
             span.badge.badge-danger
               | Admin
 

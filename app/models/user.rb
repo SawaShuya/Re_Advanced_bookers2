@@ -54,4 +54,8 @@ class User < ApplicationRecord
   def count_books_for(date)
     self.books.where(created_at: date.all_day).count
   end
+  
+  def joined?(room)
+    room_users.where(room_id: room.id).exists?
+  end
 end

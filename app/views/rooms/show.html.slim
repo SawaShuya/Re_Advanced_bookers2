@@ -1,10 +1,21 @@
 .container
   .row
     .col-8.offset-2
-      h2.title
-        = "to " + @opponent_user.name
+      h2.title.d-inline-block
+        - if @room.is_direct_message
+          = attachment_image_tag(@opponent_user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg")
+          = "to " + @opponent_user.name
+        - else
+          = attachment_image_tag(@room, :image, :fill, 50, 50, fallback: "no-image-icon.jpg")
+          = " " + @room.name + " (" + @room.room_users.count.to_s + ")　"
+      
+      - if @room.is_direct_message == false && @room.admin_id == current_user.id
+        = link_to "", edit_room_path, class:"fas fa-edit fa-2x text-secondary text-decoration-none"
         
       .chats.border style = "overflow-y:scroll; #f0ffff"
         = render 'chats/index', chats: @room.chats
       .chat_form
         = render 'chats/form', chat: @chat, room: @room
+      
+      
+      
