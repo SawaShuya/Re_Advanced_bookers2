@@ -3,7 +3,7 @@
     = attachment_image_tag(room, :image, :fill, 50, 50, fallback: "no-image-icon.jpg")
     = room.name + "　"
     - if room.admin_id == current_user.id
-      = link_to "", edit_room_path(room), class: "fas fa-edit text-secondary text-decoration-none"
+      = link_to "", edit_room_path(room), class: "fas fa-edit text-secondary text-decoration-none fa-xs"
 
   h4.card-subtitle.mb-2.text-muted
     | introduction
@@ -11,7 +11,20 @@
   p.card-text.mb-5
     = room.introduction
     
-  = render "join_room_btn", room: @room, user: current_user
+  h4.card-subtitle.mb-2.text-muted
+    | members　
+
+    i.fas.fa-user-friends.fa-xs
+      = room.room_users.count
+  
+  - room.users.each do |user|
+    p
+      = user.name
+    
+  = render "join_room_btn", room: room, user: current_user
+  
+  - if current_user.joined?(room)
+    = link_to "Go to Chat !", room_path(room), class: "btn btn-outline-success mt-3"
     
   
   

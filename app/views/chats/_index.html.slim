@@ -7,6 +7,9 @@
         = chat.created_at.strftime('%m/%d %H:%M')
   - else
     .chat.mb-3.ml-1
+      - unless chat.room.is_direct_message
+        .name.text-secondary
+          = chat.user.name
       .content.card.card-body.card-text
         = chat.content
       .chat_time.text-secondary

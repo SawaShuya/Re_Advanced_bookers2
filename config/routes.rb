@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'room_users/create'
+  get 'room_users/destroy'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
   
   resources :rooms, only: [:index, :create, :show, :new, :edit, :update] do
     get 'detail' => 'rooms#detail', as: 'detail'
+    resource :room_users, only: [:create, :destroy]
   end
   resources :chats, only: [:create, :index]
   
