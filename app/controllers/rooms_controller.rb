@@ -2,8 +2,8 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_dm_room, only: [:create_dm]
   before_action :check_mutual_follow, only: [:create_dm]
-  before_action :set_book, only: [:index, :chat_rooms]
-  before_action :set_room, only: [:new, :show, :edit, :update]
+  before_action :set_book, only: [:index, :chat_rooms, :detail]
+  before_action :set_room, only: [:new, :show, :edit, :update, :detail]
   before_action :check_collect_user, only: [:chat_rooms]
   
 
@@ -47,7 +47,14 @@ class RoomsController < ApplicationController
     
   def update
     @room.update(room_params)
-    redirect_to room_path(@room)
+    redirect_to room_detail_path(@room)
+  end
+  
+  def detail
+    @room = Room.find(params[:room_id])
+    if @room.is_direct_message
+      redirect_back(fallback_location: rooms_path)
+    end
   end
   
 

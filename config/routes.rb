@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   post 'search' => 'search#search', as: 'search'
   
   post 'dm/:id' => 'rooms#create_dm', as: 'start_dm'
-  resources :rooms, only: [:index, :create, :show, :new, :edit, :update]
+  
+  resources :rooms, only: [:index, :create, :show, :new, :edit, :update] do
+    get 'detail' => 'rooms#detail', as: 'detail'
+  end
   resources :chats, only: [:create, :index]
   
 end

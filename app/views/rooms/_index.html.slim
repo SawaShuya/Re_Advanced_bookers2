@@ -6,7 +6,7 @@ table.table.table-hover.table-inverse
           = attachment_image_tag(room, :image, :fill, 50, 50, fallback: "no-image-icon.jpg")
             
         td
-          = room.name
+          = link_to room.name, room_detail_path(room)
 
         td 
           i.fas.fa-user-friends
@@ -16,6 +16,4 @@ table.table.table-hover.table-inverse
           
         td
           - if room.admin_id == current_user.id
-            span.badge.badge-danger
-              | Admin
-
+            = link_to "edit", edit_room_path(room), class: "btn btn-success"

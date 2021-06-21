@@ -1,0 +1,19 @@
+.card.card-body.w-50
+  h3.card-title
+    = attachment_image_tag(room, :image, :fill, 50, 50, fallback: "no-image-icon.jpg")
+    = room.name + "　"
+    - if room.admin_id == current_user.id
+      = link_to "", edit_room_path(room), class: "fas fa-edit text-secondary text-decoration-none"
+
+  h4.card-subtitle.mb-2.text-muted
+    | introduction
+      
+  p.card-text.mb-5
+    = room.introduction
+    
+  = render "join_room_btn", room: @room, user: current_user
+    
+  
+  
+
+
