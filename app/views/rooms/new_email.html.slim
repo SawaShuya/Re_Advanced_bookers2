@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-sm-12.col-md-8.col-lg-5.px-5.px-sm-0.mx-auto
+      h1
+        | Event Mail
+      
+      = form_with url: room_send_email_path(@room), local:true do |f|
+        .form-group
+          = f.label :title
+          = f.text_field :title, class: 'form-control'
+        .form-group
+          = f.label :content
+          = f.text_area :content, class: 'form-control'
+        .form-group
+          = f.submit 'Send', class: 'btn btn-success'

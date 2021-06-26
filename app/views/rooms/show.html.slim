@@ -8,10 +8,10 @@
         - else
           = link_to room_detail_path(@room), class: "text-decoration-none" do
             = attachment_image_tag(@room, :image, :fill, 50, 50, fallback: "no-image-icon.jpg")
-            = " " + @room.name + " (" + @room.room_users.count.to_s + ")　"
-      
-      - if @room.is_direct_message == false && @room.admin_id == current_user.id
-        = link_to "", edit_room_path, class:"fas fa-edit fa-2x text-secondary text-decoration-none"
+            = " " + @room.name + " "
+            i.fas.fa-user-friends.fa-xs.text-secondary
+              = @room.room_users.count.to_s
+    
         
       .chats.border style = "overflow-y:scroll; #f0ffff"
         = render 'chats/index', chats: @room.chats

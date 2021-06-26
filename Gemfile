@@ -76,3 +76,8 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'rails-ujs'
 gem 'gon'
+gem 'pry-byebug'
+
+group :development do
+  gem 'letter_opener_web'
+end

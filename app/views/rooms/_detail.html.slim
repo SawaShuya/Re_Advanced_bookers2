@@ -4,6 +4,8 @@
     = room.name + "　"
     - if room.admin_id == current_user.id
       = link_to "", edit_room_path(room), class: "fas fa-edit text-secondary text-decoration-none fa-xs"
+      = "　　"
+      = link_to "", room_new_email_path(room), class: "fas fa-envelope text-secondary text-decoration-none fa-xs"
 
   h4.card-subtitle.mb-2.text-muted
     | introduction

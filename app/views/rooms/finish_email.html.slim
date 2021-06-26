@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-sm-12.col-md-12.col-lg-8.px-5.px-sm-0.mx-auto
+      h1
+        | Delivery of letters
+      h3
+        | The following information has been sent
+        
+      table.table.table-bordered
+        tr
+          th.w-25
+            | To
+          td
+            = @room.name
+        tr
+          th
+            | Title
+          td
+            = @title
+        tr
+          th
+            | Content
+          td
+            = @content
+    
+      = link_to 'room detail',room_detail_path(@room), class: 'btn btn-outline-info'

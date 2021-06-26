@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'room_users/create'
-  get 'room_users/destroy'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -25,8 +23,12 @@ Rails.application.routes.draw do
   
   resources :rooms, only: [:index, :create, :show, :new, :edit, :update] do
     get 'detail' => 'rooms#detail', as: 'detail'
+    get 'new_email' => 'rooms#new_email', as: 'new_email'
+    post 'send_email' => 'rooms#send_email', as: 'send_email'
     resource :room_users, only: [:create, :destroy]
   end
   resources :chats, only: [:create, :index]
+  
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   
 end

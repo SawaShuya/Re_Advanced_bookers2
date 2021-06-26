@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   before_action :check_dm_room, only: [:create_dm]
   before_action :check_mutual_follow, only: [:create_dm]
   before_action :set_book, only: [:index, :chat_rooms, :detail]
-  before_action :set_room, only: [:new, :show, :edit, :update, :detail]
+  before_action :set_room, only: [:new, :show, :edit, :update, :detail, :send_email, :new_email]
   before_action :check_collect_user, only: [:chat_rooms]
   
 
@@ -57,7 +57,20 @@ class RoomsController < ApplicationController
     end
   end
   
-
+  def send_email
+    @room = Room.find(params[:room_id])
+    @users = @room.users
+    @title = params[:title]
+    @content = params[:content]
+    if @title.present? && @content.present? && RoomMailer.group_email(@users, @title, @content).deliver
+      render 'rooms/finish_email'
+    else
+      render :new_email
+    end
+  end
+  
+  def new_email
+  end
   
   private
   def room_params
@@ -79,7 +92,11 @@ class RoomsController < ApplicationController
   end
   
   def set_room
-    @room = Room.find_or_initialize_by(id: params[:id])
+    if params[:room_id].present?
+      @room = Room.find(params[:room_id])
+    else
+      @room = Room.find_or_initialize_by(id: params[:id])
+    end
   end
   
   def check_admin
