@@ -5,5 +5,33 @@
   .form-group
     = f.label :opinion
     = f.text_area :body, class: 'form-control book_body'
+  #star.form-group
+    = f.label :evaluation
+    = f.hidden_field :evaluation, :value =>  book.evaluation
   .form-group
     = f.submit class: 'btn btn-success'
+
+
+- if book.id.nil? 
+  javascript:
+    $('#star').raty({
+      size: 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      scoreName: 'book[evaluation]',
+      half: true
+    });
+  
+- else
+  javascript:
+    $('#star').raty({
+      size: 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      scoreName: 'book[evaluation]',
+      half: true,
+      readOnly: true,
+      score: "#{book.evaluation}"
+    });

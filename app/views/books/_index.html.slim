@@ -6,7 +6,7 @@ table.table.table-hover.table-inverse
         | Title
       th
         | Opinion
-      th[colspan="6"]
+      th[colspan="7"]
   tbody
     - books.each do |book|
       tr
@@ -17,6 +17,9 @@ table.table.table-hover.table-inverse
           = link_to book.title,book, class: "book_#{book.id}"
         td
           = book.body
+        td
+          i.fas.fa-star.text-warning
+          = book.evaluation
         td
           div class="favorite_btn_#{book.id}"
             = render 'favorites/faborite_btn', book: book
