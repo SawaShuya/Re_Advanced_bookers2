@@ -3,16 +3,14 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:index, :show, :edit, :update, :destroy]
   before_action :view_count, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_week, only: [:index]
+  before_action :set_books, only: [:index]
   
 
   def show
     @book_comment = BookComment.new
   end
 
-  def index
-    @books = Book.all.includes(:user).sort{|a, b| b.favorites.where(created_at: @period).count <=> a.favorites.where(created_at: @period).count}
-  end
+  def index; end
 
   def create
     @book = current_user.books.new(book_params)
@@ -51,11 +49,7 @@ class BooksController < ApplicationController
     end
   end
   
-  def set_week
-    from = Time.current.ago(6.days).at_beginning_of_day
-    to = Time.current.at_end_of_day
-    @period = from..to
-  end
+  
   
   def view_count
     @book.update(page_views: @book.page_views + 1)

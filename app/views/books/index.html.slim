@@ -12,4 +12,10 @@
     .col-md-8.offset-md-1
       h2
         | Books
+      .order-links.text-right  
+        = link_to "New arrival", books_path
+        |  | 
+        = link_to "Favorite order", books_path(sort_order: "favorite")
+        |  | 
+        = link_to "Favorite weekly", books_path(sort_order: "weekly_favorite")
       = render 'index', books: @books
