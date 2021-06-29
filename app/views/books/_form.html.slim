@@ -5,6 +5,9 @@
   .form-group
     = f.label :opinion
     = f.text_area :body, class: 'form-control book_body'
+  .form_group
+    = f.label :category
+    = f.text_field :category_list, value: book.category_list.join(','), class: "form-control"
   #star.form-group
     = f.label :evaluation
     = f.hidden_field :evaluation, :value =>  book.evaluation

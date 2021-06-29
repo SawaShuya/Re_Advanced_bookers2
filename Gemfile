@@ -82,4 +82,5 @@ group :development do
   gem 'letter_opener_web'
 end
 
-gem 'ratyrate'
+#gem 'ratyrate'
+gem 'acts-as-taggable-on'

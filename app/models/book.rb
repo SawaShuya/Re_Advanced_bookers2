@@ -7,6 +7,9 @@ class Book < ApplicationRecord
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1
   }, presence: true
+  
+  acts_as_taggable
+  acts_as_taggable_on :categories
 	
 	has_many :favorites, dependent: :destroy
 	has_many :book_comments, dependent: :destroy
